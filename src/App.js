@@ -23,7 +23,9 @@ function App() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/books");
+      const response = await axios.get(
+        "https://bsms-backend.onrender.com/api/books"
+      );
       setBooks(response.data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -57,12 +59,15 @@ function App() {
     event.preventDefault();
     try {
       if (editBookId) {
-        await axios.put(`http://localhost:5000/api/books/${editBookId}`, {
-          bookName,
-          authorName,
-        });
+        await axios.put(
+          `https://bsms-backend.onrender.com/api/books/${editBookId}`,
+          {
+            bookName,
+            authorName,
+          }
+        );
       } else {
-        await axios.post("http://localhost:5000/api/books", {
+        await axios.post("https://bsms-backend.onrender.com/api/books", {
           bookName,
           authorName,
         });
@@ -79,7 +84,9 @@ function App() {
 
   const handleDeleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${bookId}`);
+      await axios.delete(
+        `https://bsms-backend.onrender.com/api/books/${bookId}`
+      );
       fetchBooks(); // Fetch books after deleting
     } catch (error) {
       console.error("Error deleting book:", error);
